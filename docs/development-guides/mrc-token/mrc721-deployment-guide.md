@@ -7,7 +7,7 @@ title: MRC 721 Deployment Guide
 
 A WASM implementation of the MRC 721 NFT standard, similar to Ethereum's ERC721.
 
-[Please see example code here.](https://github.com/openmetaearth/mrc20/tree/main/mrc721)
+[Please see example code here.](https://github.com/openmetaearth/me-docs/blob/main/docs/development-guides/mrc-token/mrc721-nft-contract.md)
 
 ## Features
 

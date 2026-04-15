@@ -7,7 +7,7 @@ title: MRC 20 Deployment Guide
 
 A WASM implementation of the MRC 20 token standard, similar to Ethereum's MRC 20.
 
-[Please see example code here.](https://github.com/openmetaearth/mrc20/tree/main/mrc20)
+[Please see example code here.](https://github.com/openmetaearth/me-docs/blob/main/docs/development-guides/mrc-token/mrc20-token-contract.md)
 
 ## Features
 
