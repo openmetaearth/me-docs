@@ -410,6 +410,17 @@ SEQUENCER_ADDR=$(med keys show seq_openroll -a --keyring-dir ~/.openroll/sequenc
 
 **Get DA auth token:**
 
+**Option 1: Use Official Free Token (Recommended for Testing)**
+
+For testing purposes, you can use the official free auth_token:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJwdWJsaWMiLCJyZWFkIiwid3JpdGUiXX0.1WY_3eyaVPp0yHPjsP2SlErjkZ1e4uzyGtwevI2q7Zg
+```
+
+This token has public, read, and write permissions and can be used directly in your `da_config`.
+
+**Option 2: Deploy Your Own DA Light Node**
 
 Refer to **[ME-DA Light Node Setup Guide](me-da-light-node.md)** to complete:
 1. Deploy DA light node and connect to Beta testnet bridge node
