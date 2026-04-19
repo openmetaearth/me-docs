@@ -375,13 +375,11 @@ med tx slashing unjail --from validator --chain-id mechain-mainnet-1
 ### Official Resources
 
 - **Documentation**: https://docs.mec.me
-- **Explorer**: https://explorer.mechain.io
-- **Status Page**: https://status.mechain.io
+- **Explorer**: https://explorer.mec.me
 
 ### Community Support
 
 - **Telegram**: https://t.me/metaearthdevs
-- **Forum**: https://forum.mechain.io
 
 ---
 

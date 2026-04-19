@@ -629,43 +629,9 @@ Use WireGuard or OpenVPN to establish VPN, only allow access to blockchain nodes
 
 ## Smart Contract Deployment Permissions
 
-### Disable Public Deployment
-
-Edit genesis file or use governance to modify EVM module parameters:
-
-```json
-{
-  "evm": {
-    "params": {
-      "enable_create": false,  // Disable contract creation
-      "enable_call": true      // Allow contract calls
-    }
-  }
-}
-```
-
 ### Whitelist Mechanism
 
-Use governance to create whitelist, only allow specific addresses to deploy contracts:
-
-```bash
-# Submit whitelist proposal
-${BASE_DIR}/med/bin/med tx gov submit-proposal \
-  param-change proposal.json \
-  --from admin \
-  --chain-id mycompany_chain_1
-
-# proposal.json content:
-{
-  "title": "Add Contract Deployer Whitelist",
-  "description": "Allow address me1abc...xyz to deploy contracts",
-  "changes": [{
-    "subspace": "evm",
-    "key": "DeployerWhitelist",
-    "value": "[\"me1abc...xyz\"]"
-  }]
-}
-```
+Use governance to create whitelist, only allow specific addresses to deploy contracts
 
 ---
 

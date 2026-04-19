@@ -6,7 +6,7 @@ title: Contributing to ME
 
 # Contributing to Meta Earth
 
-> Meta Earth, as an open-source technology community, is jointly maintained and built by community contributors from around the world. Regardless of your field or professional level, there are many ways to contribute to Meta Earth and make a real difference to the entire Meta Earth community.
+> Meta Earth Devs, as an open-source technology community, is jointly maintained and built by community contributors from around the world. Regardless of your field or professional level, there are many ways to contribute to Meta Earth and make a real difference to the entire Meta Earth community.
 
 Listed here are known ways to participate in Meta Earth work and how you can get started. Even if what you want to do is not listed here, we welcome contributions. If you're still not quite sure, please actively submit an Issue on [Github](https://github.com/openmetaearth/) or post on the Forum seeking community advice.
 

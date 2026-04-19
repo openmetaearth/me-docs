@@ -514,7 +514,7 @@ Important interface parameters involved in fraud proposals:
 |:-----|:-----|:------------|
 | `description` | string | Description information |
 | `rollup_id` | string | Target Rollup ID |
-| `ibc_client_id` | string | Rollup's IBC client ID |
+| `mbc_client_id` | string | Rollup's MBC client ID |
 | `fraudelent_height` | uint64 | Block height where fraud occurred |
 | `fraudelent_sequencer_address` | string | Address of the malicious Sequencer |
 
@@ -530,7 +530,7 @@ After the HUB layer compares the data commitment submitted by the Rollup with th
   - **The malicious Sequencer address of the Rollup is set to Jailed**
   - **The stake of the malicious Sequencer address is slashed**
   - **Other sequencer addresses bound to the Rollup are unbonded and their stakes are returned**
-  - **The IBC client is frozen, and all pending IBC packets for that Rollup are rolled back**
+  - **The MBC client is frozen, and all pending MBC packets for that Rollup are rolled back**
 
 #### 3.2 Rewards
 

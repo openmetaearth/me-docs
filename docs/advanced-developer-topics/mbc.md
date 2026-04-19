@@ -7,7 +7,7 @@ title: MBC
 
 ## Overview
 
-MBC (Multi-Blockchain Communication) is Meta Earth's cross-chain communication protocol, derived from the Cosmos network's IBC protocol. It is a new protocol fully compatible with native Cosmos IBC. Through MBC, Meta Earth can communicate with Rollup chains, multiple Rollup chains, and various Cosmos chains.
+MBC (Multi-Blockchain Communication) is Meta Earth's cross-chain communication protocol, derived from the Cosmos network's MBC protocol. It is a new protocol fully compatible with native Cosmos MBC. Through MBC, Meta Earth can communicate with Rollup chains, multiple Rollup chains, and various Cosmos chains.
 
 ## Core Features
 
@@ -75,7 +75,7 @@ MBC supports Meta Earth's unique scenarios, including cross-chain communication 
 
 ## Architecture Design
 
-The MBC protocol architecture inherits the core design philosophy of IBC, while optimizing for Meta Earth's characteristics:
+The MBC protocol architecture inherits the core design philosophy of MBC, while optimizing for Meta Earth's characteristics:
 
 ```
 ME Hub (Central Hub)
@@ -93,14 +93,14 @@ ME Hub (Central Hub)
 3. **ME Chains**: Other ME chains in the ecosystem
 4. **MBC Module**: Responsible for sending, receiving, and verifying cross-chain messages
 
-## Compatibility with IBC
+## Compatibility with MBC
 
-MBC is an enhanced version developed based on the IBC protocol:
+MBC is an enhanced version developed based on the MBC protocol:
 
 **Inherited Features**:
-- Fully compatible with IBC protocol standards
-- Supports standard IBC cross-chain transfers
-- Follows IBC's security model
+- Fully compatible with MBC protocol standards
+- Supports standard MBC cross-chain transfers
+- Follows MBC's security model
 
 **Innovative Extensions**:
 - Supports special communication needs of Rollup chains
@@ -153,7 +153,7 @@ Share data and state between different chains:
 
 ### 3. Ease of Use
 
-- Compatible with IBC standard tools
+- Compatible with MBC standard tools
 - Comprehensive development documentation
 - Rich SDK support
 
