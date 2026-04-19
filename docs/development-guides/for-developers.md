@@ -5,13 +5,13 @@ title: For Developers
 
 # ME Hub Development Guide
 
-ME Hub is compatible with both EVM and WASM dual virtual machines, supporting developers to write smart contracts using multiple high-level languages. This document helps developers quickly develop, deploy, debug contracts on the ME Hub network, and develop various DApp applications based on contracts.
+ME Hub is compatible with WASM virtual machine, supporting developers to write smart contracts using multiple high-level languages. This document helps developers quickly develop, deploy, debug contracts on the ME Hub network, and develop various DApp applications based on contracts.
 
 ## What is a DApp?
 
 DApp (Decentralized Application) is a decentralized application built on blockchain. On ME Hub, DApps can utilize the following features:
 
-- **Dual Virtual Machine Support**: EVM and WASM, meeting different development needs
+- **Dual Virtual Machine Support**: WASM, meeting different development needs
 - **Cross-Chain Capabilities**: Cross-chain interaction through MBC protocol
 - **Decentralized Identity**: Integrated DID system providing identity authentication
 - **Modular Architecture**: Build efficient applications using ME Hub's modular design
@@ -43,7 +43,7 @@ Connecting to the test network allows you to test your code in a more open envir
 **Testnet Configuration**:
 - **Chain ID**: `mechain_400-1`
 - **Currency Symbol**: MEC
-- **Explorer**: https://testnet-explorer.mec.me/
+- **Explorer**: https://www.explorer-testnet.me/
 
 **ME Hub Node**:
 - RPC: `https://beta-hub-26657.explorer-testnet.me`
@@ -64,38 +64,7 @@ When you have completed all testing on private and test networks, you can seamle
 
 ### 2. Contract Development
 
-ME Hub supports EVM and WASM dual virtual machines, and developers can choose contract development languages based on their expertise.
-
-#### EVM Smart Contract Development
-
-Supports developing Ethereum-compatible smart contracts using Solidity language.
-
-**Getting Started**:
-- Learn how to compile, deploy, publish, and call Solidity contracts on the ME Hub network
-- Use Remix IDE or Hardhat for development
-- Connect to the network and deploy contracts through MetaMask
-
-**Best Practices**:
-- Set GasFee reasonably to avoid transaction failures
-- Follow smart contract security development guidelines
-- Thoroughly test before deploying to mainnet
-- Use multi-signature wallets to manage important contracts
-
-**Development Costs**:
-- Deployment costs depend on contract code size and complexity
-- Call costs are based on computation executed
-- Compared to Ethereum, ME Hub's GasFee is lower
-
-**Security Guide**:
-- Avoid reentrancy attacks
-- Check for integer overflow
-- Use delegatecall cautiously
-- Implement access control
-
-**Contract Migration**:
-- Supports migrating contracts from Ethereum or other EVM-compatible chains
-- Most Ethereum contracts can be deployed directly
-- Note differences in chain-specific features
+ME Hub supports WASM virtual machine, and developers can choose contract development languages based on their expertise.
 
 #### WASM Smart Contract Development
 
@@ -108,7 +77,7 @@ WASM supports developing high-performance smart contracts using Rust language.
 
 **Development Costs**:
 - WASM contracts execute more efficiently
-- GasFee is typically lower than EVM contracts
+- GasFee is typically lower than other contract types
 - Supports more complex business logic
 
 **Contract Libraries**:
@@ -142,7 +111,7 @@ If you want to directly interact with contracts through Web frontend, you can us
 
 ### 4. How to Issue Tokens?
 
-ME Hub inherits the EVM virtual machine and theoretically can be compatible with tokens of all Ethereum standard protocols.
+ME Hub inherits the WASM virtual machine and theoretically can be compatible with tokens of all Ethereum standard protocols.
 
 #### MRC-20 Tokens
 
@@ -213,7 +182,7 @@ If you need test tokens, you can obtain them through the following ways:
 - Monitor account balance and history
 - Verify contract code
 
-**Address**: https://testnet-explorer.mec.me/ (🚧 Feature under development, stay tuned)
+**Address**: https://www.explorer-testnet.me/ (🚧 Feature under development, stay tuned)
 
 ---
 

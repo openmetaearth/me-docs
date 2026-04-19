@@ -55,7 +55,7 @@ To thoroughly solve the problems of monolithic chains, the Modular Blockchain so
 The emergence of Rollup technology can be seen as a pioneer of the modular concept. It primarily focuses on separating the execution layer, with Rollup handling transaction execution and then packaging transaction results and information back to the main chain.
 
 #### ME DA Layer Practitioner
-ME (formerly Lazy Ledger) as an early practitioner of modular blockchain set important reference standards for blockchain development. However, ME mainly focuses on the data availability layer (DA), excluding the execution layer, aimed at empowering other public chains.
+ME as an early practitioner of modular blockchain set important reference standards for blockchain development. However, ME mainly focuses on the data availability layer (DA), excluding the execution layer, aimed at empowering other public chains.
 
 #### Me Hub Execution Layer Supplement
 ME Hub as the execution layer supplement solution for ME provides a new perspective for creating new blockchain networks. The launch of its testnet ME Hub also attracted widespread industry attention.

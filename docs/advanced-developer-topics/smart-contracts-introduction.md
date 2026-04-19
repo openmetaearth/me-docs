@@ -13,7 +13,7 @@ Meta Earth supports multiple smart contract development methods, providing devel
 
 ## 🔧 Supported Smart Contract Types
 
-### 1. WASM Smart Contracts
+### WASM Smart Contracts
 
 High-performance smart contracts based on the Rust language, suitable for complex business logic.
 
@@ -23,18 +23,6 @@ High-performance smart contracts based on the Rust language, suitable for comple
 - 🔄 Supports cross-chain interoperability (MBC)
 - 🛡️ Built-in security mechanisms
 
-### 2. EVM Smart Contracts
-
-Fully compatible with Ethereum EVM smart contracts, supporting Solidity development.
-
-**Features:**
-- 📝 Developed using Solidity language
-- 🔗 Fully compatible with Ethereum ecosystem
-- 🛠️ Rich development tool support
-- 📚 Abundant development resources and community support
-
----
-
 ## 🚀 Quick Start
 
 ### Choose Development Method
@@ -42,7 +30,6 @@ Fully compatible with Ethereum EVM smart contracts, supporting Solidity developm
 | Development Method | Language | Suitable Scenarios |
 |-------------------|----------|-------------------|
 | **WASM** | Rust | High-performance applications, cross-chain applications |
-| **EVM** | Solidity | Ethereum ecosystem migration, DeFi applications |
 
 ### Development Environment Preparation
 

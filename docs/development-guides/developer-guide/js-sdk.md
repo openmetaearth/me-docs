@@ -713,14 +713,10 @@ SDK integrates the following blockchain modules:
 - `cosmos.gov`, `cosmos.distribution`, `cosmos.slashing`
 - etc...
 
-### IBC Modules
+### MBC Modules
 
-- `ibc.core.channel`, `ibc.core.client`, `ibc.core.connection`
-- `ibc.applications.transfer`
-
-### EVM Modules
-
-- `ethermint.evm.v1`, `ethermint.feemarket.v1`
+- `mbc.core.channel`, `mbc.core.client`, `mbc.core.connection`
+- `mbc.applications.transfer`
 
 ### Meta Earth Custom Modules
 

@@ -42,14 +42,17 @@ The Meta Earth testnet is a public blockchain testing environment used for:
 
 | Parameter | Value |
 |-----------|-------|
-| **Chain ID** | `mechain-testnet-2` |
-| **Token Symbol** | LAT |
-| **Minimum Unit** | ulat (1 LAT = 10^6 ulat) |
+| **Chain ID** | `mechain_400-1` |
+| **Token Symbol** | MEC |
+| **Minimum Unit** | umec (1 MEC = 10^6 umec) |
 | **Block Time** | ~3s |
-| **RPC Endpoint** | https://rpc-testnet.mechain.io |
-| **REST API** | https://api-testnet.mechain.io |
-| **Explorer** | https://explorer-testnet.mechain.io |
+| **RPC Endpoint** | https://beta-hub-26657.explorer-testnet.me |
+| **REST API** | https://beta-hub-1317.explorer-testnet.me |
+| **Explorer** | https://www.explorer-testnet.me |
 | **Faucet** | https://www.mec.me/en-US/faucet |
+
+
+
 
 ### Seed Nodes
 
@@ -160,7 +163,7 @@ Light nodes sync and verify blocks quickly by trusting specific full nodes, with
 ```bash
 # Initialize node (create node config files and keys)
 med init my-light-node \
-  --chain-id mechain-testnet-2 \
+  --chain-id mechain_400-1 \
   --home ${MECHAIN_HOME}
 ```
 
@@ -168,7 +171,7 @@ med init my-light-node \
 
 ```bash
 # Download testnet genesis file (defines network initial state and parameters)
-wget https://raw.githubusercontent.com/mechain/testnets/main/mechain-testnet-2/genesis.json \
+wget https://raw.githubusercontent.com/mechain/testnets/main/mechain_400-1/genesis.json \
   -O ${MECHAIN_HOME}/config/genesis.json
 
 # Verify genesis file (check genesis file format and content correctness)
@@ -185,7 +188,7 @@ Edit `${MECHAIN_HOME}/config/config.toml`:
 enable = true                              # Enable state sync functionality
 
 # Configure RPC servers
-rpc_servers = "https://rpc-testnet.mechain.io:443,https://rpc-testnet-backup.mechain.io:443"  # RPC server list, comma-separated
+rpc_servers = "https://beta-hub-1317.explorer-testnet.me,https://rpc-testnet-backup.mechain.io:443"  # RPC server list, comma-separated
 
 # Trust height and hash (obtain from explorer)
 trust_height = 1000000                     # Trust block height (recommend latest height minus several thousand blocks)
@@ -254,14 +257,14 @@ Full nodes download and verify all blocks, providing complete historical data qu
 ```bash
 # Initialize node
 med init my-full-node \
-  --chain-id mechain-testnet-2 \
+  --chain-id mechain_400-1 \
   --home ${MECHAIN_HOME}
 ```
 
 ### Download Genesis File
 
 ```bash
-wget https://raw.githubusercontent.com/mechain/testnets/main/mechain-testnet-2/genesis.json \
+wget https://raw.githubusercontent.com/mechain/testnets/main/mechain_400-1/genesis.json \
   -O ${MECHAIN_HOME}/config/genesis.json
 ```
 
@@ -319,7 +322,7 @@ Edit `${MECHAIN_HOME}/config/config.toml`:
 ```toml
 [statesync]
 enable = true
-rpc_servers = "https://rpc-testnet.mechain.io:443,https://rpc-testnet-backup.mechain.io:443"
+rpc_servers = "https://beta-hub-1317.explorer-testnet.me,https://rpc-testnet-backup.mechain.io:443"
 trust_height = 2000000
 trust_hash = "Obtain latest trust hash"
 trust_period = "168h0m0s"
@@ -426,7 +429,7 @@ Visit faucet: https://www.mec.me/en-US/faucet
 ```bash
 # Query balance (check if account has sufficient tokens for staking)
 med query bank balances ${VALIDATOR_ADDR} \
-  --node https://rpc-testnet.mechain.io:443
+  --node https://beta-hub-1317.explorer-testnet.me
 
 # Expected output includes at least 100000000ulat (100 LAT)
 ```
@@ -444,7 +447,7 @@ med tx staking create-validator \
   --amount=100000000ulat \
   --pubkey="${VALIDATOR_PUBKEY}" \
   --moniker="My Validator" \
-  --chain-id=mechain-testnet-2 \
+  --chain-id=mechain_400-1 \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
@@ -455,7 +458,7 @@ med tx staking create-validator \
   --from=validator \
   --keyring-backend=file \
   --home=${MECHAIN_HOME} \
-  --node=https://rpc-testnet.mechain.io:443
+  --node=https://beta-hub-1317.explorer-testnet.me
 ```
 
 **Parameter Description:**
@@ -473,7 +476,7 @@ med query staking validator \
   $(med keys show validator --bech val -a \
     --keyring-backend file \
     --home ${MECHAIN_HOME}) \
-  --node https://rpc-testnet.mechain.io:443
+  --node https://beta-hub-1317.explorer-testnet.me
 
 # View in explorer
 # https://explorer-testnet.mechain.io/validators
@@ -488,16 +491,16 @@ med query staking validator \
 ```bash
 # Query validator information
 med query staking validator <validator-address> \
-  --node https://rpc-testnet.mechain.io:443
+  --node https://beta-hub-1317.explorer-testnet.me
 
 # Query signing status
 med query slashing signing-info \
   $(med tendermint show-validator --home ${MECHAIN_HOME}) \
-  --node https://rpc-testnet.mechain.io:443
+  --node https://beta-hub-1317.explorer-testnet.me
 
 # Query delegations
 med query staking delegations-to <validator-address> \
-  --node https://rpc-testnet.mechain.io:443
+  --node https://beta-hub-1317.explorer-testnet.me
 ```
 
 ### Edit Validator Information
@@ -510,10 +513,10 @@ med tx staking edit-validator \
   --identity="<keybase-id>" \
   --commission-rate="0.05" \
   --from=validator \
-  --chain-id=mechain-testnet-2 \
+  --chain-id=mechain_400-1 \
   --keyring-backend=file \
   --home=${MECHAIN_HOME} \
-  --node=https://rpc-testnet.mechain.io:443
+  --node=https://beta-hub-1317.explorer-testnet.me
 ```
 
 ### Unbond
@@ -523,10 +526,10 @@ med tx staking unbond \
   <validator-address> \
   50000000ulat \
   --from=validator \
-  --chain-id=mechain-testnet-2 \
+  --chain-id=mechain_400-1 \
   --keyring-backend=file \
   --home=${MECHAIN_HOME} \
-  --node=https://rpc-testnet.mechain.io:443
+  --node=https://beta-hub-1317.explorer-testnet.me
 ```
 
 ### Unjail
@@ -536,10 +539,10 @@ If validator is jailed due to downtime:
 ```bash
 med tx slashing unjail \
   --from=validator \
-  --chain-id=mechain-testnet-2 \
+  --chain-id=mechain_400-1 \
   --keyring-backend=file \
   --home=${MECHAIN_HOME} \
-  --node=https://rpc-testnet.mechain.io:443
+  --node=https://beta-hub-1317.explorer-testnet.me
 ```
 
 ---
@@ -871,7 +874,7 @@ med tx gov vote <id> <option>      # Vote
 ---
 
 **Document Version**: v2.0.0  
-**Applicable Testnet**: mechain-testnet-2  
+**Applicable Testnet**: mechain_400-1  
 **Last Updated**: 2026-01-09  
 **Maintainer**: Meta Earth Development Team
 

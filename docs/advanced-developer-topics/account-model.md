@@ -7,7 +7,7 @@ title: Account Model
 
 ## Overview
 
-ME Hub adopts a hybrid account model that is compatible with both Bech32 address format and Ethereum's EVM account system, while extending unique features such as Decentralized Identity (DID) and regional accounts. This document provides a detailed introduction to ME Hub's account types, address formats, account management, and usage methods.
+ME Hub adopts a hybrid account model that is compatible with both Bech32 address format, while extending unique features such as Decentralized Identity (DID) and regional accounts. This document provides a detailed introduction to ME Hub's account types, address formats, account management, and usage methods.
 
 ## Account System Architecture
 
@@ -26,8 +26,7 @@ ME Hub Account System
     |   └── Other module accounts...
     |
     ├── Contract Account
-    |   ├── WASM Contract
-    |   └── EVM Smart Contract
+    |   └── WASM Contract
     |
     └── Validator Node Address
         ├── Validator Operator Address
@@ -50,7 +49,6 @@ In address validation logic, the system enforces strict verification rules. Addr
 | Validator Account | `mevaloper` | `mevaloperpub` | `mevaloper1abc...xyz` |
 | Consensus Node | `mevalcons` | `mevalconspub` | `mevalcons1abc...xyz` |
 | WASM Contract | `me` | - | `me1contract...xyz` |
-| EVM Contract | `0x` | - | `0x1234...5678` |
 
 ## Account Type Details
 
@@ -69,7 +67,7 @@ For module account list, see the explorer formula page: https://explorer.mec.me/
 
 #### Module Account List
 
-ME Hub contains a series of core module accounts that perform specific system functions. For example, the fee collector aggregates network-wide transaction fees, the mint module is responsible for producing new tokens, and the staking pool manages all bonded and unbonded staking assets. Additionally, governance, IBC transfer, sequencer, and EVM/WASM modules also have independent system accounts.
+ME Hub contains a series of core module accounts that perform specific system functions. For example, the fee collector aggregates network-wide transaction fees, the mint module is responsible for producing new tokens, and the staking pool manages all bonded and unbonded staking assets. Additionally, governance, MBC transfer, sequencer, and WASM modules also have independent system accounts.
 
 #### Module Account Characteristics
 
@@ -82,13 +80,7 @@ Operations personnel and developers can query the detailed list of network-wide 
 
 ME Hub supports two smart contract systems:
 
-#### 3.1 EVM Smart Contract
-
-EVM contracts include "Externally Owned Accounts" (EOA) controlled by private keys and "Contract Accounts" driven by code logic. Contract address generation follows industry-standard hashing algorithms, comprehensively considering the deployer's address and corresponding transaction Nonce value.
-
-At the state storage level, contract accounts maintain core data such as Nonce, account balance, code hash, and storage root hash. Developers can easily complete contract deployment and invocation through standard Ethereum JSON-RPC interfaces or supporting tools (like Hardhat).
-
-#### 3.2 WASM Smart Contract
+#### 3.1 WASM Smart Contract
 
 WASM contract addresses use unified Bech32 encoding, with prefix `me`. The contract entry process logic is clear: first store the compiled bytecode to generate a code ID, then instantiate with specific initialization messages and administrative permissions, and finally generate a unique contract address through a derivation algorithm.
 

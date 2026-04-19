@@ -149,7 +149,6 @@ When submitting this type of proposal, initiators need to detail fund usage, exp
 ### 6. Other Specialized Proposals
 
 - **Denom Metadata Proposal**: Create/update token metadata
-- **EVM Parameter Proposal**: Update EVM-related parameters
 - **Cancel Upgrade Proposal**: Cancel planned upgrades
 
 ## Governance Process

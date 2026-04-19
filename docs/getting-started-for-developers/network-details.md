@@ -55,7 +55,7 @@ Rollup is an application-specific modular blockchain built on Meta Earth, with t
 
 #### 3. Modular Components
 - **Consensus Module**: Can choose different consensus mechanisms (such as Tendermint, PoA, etc.)
-- **Execution Engine**: Supports EVM and WASM virtual machines
+- **Execution Engine**: Supports WASM virtual machines
 - **State Management**: Custom state storage and management mechanisms
 - **Network Layer**: Flexible configuration of P2P network topology
 - **API Interfaces**: Provides standard JSON-RPC, REST, and WebSocket interfaces

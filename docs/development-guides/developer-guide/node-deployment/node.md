@@ -145,8 +145,8 @@ Start
 - [Smart Contract Development Guide](https://docs.mec.me/smart-contracts-introduction)
 
 ### Network Resources
-- **Testnet Explorer**: https://explorer-testnet.mechain.io
-- **Mainnet Explorer**: https://explorer.mechain.io
+- **Testnet Explorer**: https://www.explorer-testnet.me
+- **Mainnet Explorer**: https://explorer.mec.me
 - **Testnet Faucet**: https://www.mec.me/en-US/faucet
 
 ### Community Support
