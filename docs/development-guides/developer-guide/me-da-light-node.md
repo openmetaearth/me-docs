@@ -459,7 +459,6 @@ tail -100 ~/meda-light.log | grep ERROR
 
 ## Reference Resources
 
-- **ME-DA Source Code**: https://github.com/st-chain/meda-app
 - **RollApp Deployment Guide**: [rollup.md](rollup.md)
 - **Beta Testnet Info**: Contact ME Protocol operations team
 
