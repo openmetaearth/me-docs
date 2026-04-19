@@ -206,7 +206,7 @@ Chain ID:   mechain_400-1
 
 ```bash
 # Clone OpenRoll project
-git clone https://github.com/st-chain/openroll.git
+git clone https://github.com/openmetaearth/openroll.git
 cd openroll
 
 # Compile and install rollappd binary
@@ -722,7 +722,7 @@ cp -r ~/.openroll ~/.openroll.backup.$(date +%Y%m%d)
 pkill -f "rollappd start"
 
 # 3. Update binary
-cd ~/GolandProjects/st-chain/openroll
+cd ~/GolandProjects/openroll
 git pull origin main
 make install
 
