@@ -56,7 +56,9 @@ This guide will help you deploy and run production-grade nodes on the Meta Earth
 ### 2. Software Environment
 
 - Ubuntu 22.04 LTS or higher
-- Go 1.21+ (if compiling from source)
+- Go 1.23+ (required for building from source)
+- Git
+- Make
 - Docker (optional)
 
 ### 3. Staking Tokens (Validator Nodes)
@@ -91,43 +93,30 @@ sudo systemctl enable ntp        # Set to start on boot
 sudo systemctl start ntp         # Start NTP service
 ```
 
-### Step 2: Download Mainnet Program
+### Step 2: Build from Source
 
 ```bash
 # Create directory
 export MECHAIN_HOME="${HOME}/.mechain"
 mkdir -p ${MECHAIN_HOME}
 
-# Download latest mainnet version (get official release binaries from GitHub)
-cd /tmp
-wget https://github.com/mechain/mechain/releases/download/v1.0.0/mechain_mainnet_linux_amd64.tar.gz
+# Clone the me-hub repository (get latest source code from GitHub)
+cd ~
+git clone https://github.com/openmetaearth/me-hub.git
+cd me-hub
 
-# Extract and install (install program to system path)
-tar -xzf mechain_mainnet_linux_amd64.tar.gz  # Extract archive
-sudo mv med /usr/local/bin/                    # Move to system path
-sudo chmod +x /usr/local/bin/med               # Add execute permission
+# Checkout to stable branch/tag (replace with actual version when available)
+# git checkout vX.X.X
+
+# Build and install (compile source code and install to system path)
+make install
 
 # Verify installation (check version number to confirm successful installation)
 med version
 ```
 
-### Step 3: Initialize Node
 
-```bash
-# Initialize node (create node config files and keys, Chain ID must match mainnet)
-med init my-mainnet-node \
-  --chain-id mechain-mainnet-1 \
-  --home ${MECHAIN_HOME}
-
-# Download mainnet genesis file (defines mainnet initial state, all nodes must use same file)
-wget https://raw.githubusercontent.com/mechain/mainnet/main/genesis.json \
-  -O ${MECHAIN_HOME}/config/genesis.json
-
-# Verify genesis file (check file integrity and format correctness)
-med validate-genesis --home ${MECHAIN_HOME}
-```
-
-### Step 4: Configure Node
+### Step 3: Configure Node
 
 Edit `${MECHAIN_HOME}/config/config.toml`:
 
@@ -161,7 +150,7 @@ swagger = false                                # Disable Swagger docs in product
 address = "tcp://127.0.0.1:1317"              # REST API listen address, local access only
 ```
 
-### Step 5: Configure System Service
+### Step 4: Configure System Service
 
 ```bash
 sudo tee /etc/systemd/system/mechain.service > /dev/null <<EOF
@@ -185,7 +174,7 @@ sudo systemctl enable mechain # Set to start automatically on boot
 sudo systemctl start mechain  # Start node service
 ```
 
-### Step 6: Monitor Sync Status
+### Step 5: Monitor Sync Status
 
 ```bash
 # View logs (real-time monitor node operation status and error messages)
@@ -230,7 +219,7 @@ med tx staking create-validator \
   --amount=10000000000umec \                             # Staking amount (10,000 MEC)
   --pubkey="${VALIDATOR_PUBKEY}" \                      # Validator node public key
   --moniker="Your Validator Name" \                     # Validator display name
-  --chain-id=mechain-mainnet-1 \                         # Mainnet chain ID
+  --chain-id=me-chain \                         # Mainnet chain ID
   --commission-rate="0.05" \                             # Commission rate 5%
   --commission-max-rate="0.20" \                         # Max commission rate 20%
   --commission-max-change-rate="0.01" \                  # Max daily commission change 1%
@@ -337,27 +326,18 @@ gpg -c ${BACKUP_DIR}.tar.gz
 
 ## ❓ FAQ
 
-### 1. How to quickly sync node?
 
-Recommend using State Sync or official snapshots:
-
-```bash
-# Download latest snapshot
-wget https://snapshots.mechain.io/mainnet/latest.tar.lz4
-lz4 -d latest.tar.lz4 | tar -xf - -C ${MECHAIN_HOME}/data
-```
-
-### 2. What to do if validator is jailed?
+### 1. What to do if validator is jailed?
 
 ```bash
 # Check jail reason
 med query slashing signing-info $(med tendermint show-validator)
 
 # Unjail
-med tx slashing unjail --from validator --chain-id mechain-mainnet-1
+med tx slashing unjail --from validator --chain-id me-chain
 ```
 
-### 3. How to improve validator ranking?
+### 2. How to improve validator ranking?
 
 - Increase staking amount
 - Maintain high uptime (99.9%+)
@@ -397,7 +377,7 @@ med tx slashing unjail --from validator --chain-id mechain-mainnet-1
 ---
 
 **Document Version**: v2.0.0  
-**Applicable Mainnet**: mechain-mainnet-1  
+**Applicable Mainnet**: me-chain  
 **Last Updated**: 2026-01-09  
 **Maintainer**: Meta Earth Development Team
 
