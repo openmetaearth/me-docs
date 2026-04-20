@@ -59,9 +59,11 @@ Private blockchain networks are suitable for:
 ### Software Dependencies
 
 - Operating System: Ubuntu 20.04+ or macOS
-- Docker: v20.10+
-- Docker Compose: v1.29+
-- Go: v1.21+ (required when compiling from source)
+- Docker: v20.10+ (for Docker deployment)
+- Docker Compose: v1.29+ (for Docker deployment)
+- Go: v1.23+ (required for building from source)
+- Git
+- Make
 
 ---
 
@@ -75,12 +77,17 @@ export BASE_DIR="${HOME}/mechain-private"
 mkdir -p ${BASE_DIR}
 cd ${BASE_DIR}
 
-# Download initialization script
-wget https://raw.githubusercontent.com/mechain/mechain/main/scripts/init-env.sh
-chmod +x init-env.sh
+# Clone the me-hub repository
+git clone https://github.com/openmetaearth/me-hub.git
+cd me-hub
 
-# Run initialization script (automatically creates all node configurations)
-bash init-env.sh
+# Check if init-env.sh script exists, if so run it
+# Note: This script may not be available in the repository yet
+if [ -f "scripts/init-env.sh" ]; then
+  bash scripts/init-env.sh
+else
+  echo "Initialization script not found. Please follow the manual deployment steps below."
+fi
 ```
 
 **Script Functionality:**
@@ -129,18 +136,19 @@ If you need more customization control, follow these manual deployment steps.
 export BASE_DIR="${HOME}/mechain-private"
 mkdir -p ${BASE_DIR}/{med,nodes/{hub-nodes,da-nodes}}
 
-# Download pre-compiled binary
-cd /tmp
-wget https://github.com/mechain/mechain/releases/download/v1.2.0/mechain_linux_amd64.tar.gz
-tar -xzf mechain_linux_amd64.tar.gz
-mv med ${BASE_DIR}/med/bin/
-chmod +x ${BASE_DIR}/med/bin/med
-
-# Or compile from source
-git clone https://github.com/mechain/mechain.git
-cd mechain
+# Compile from source (recommended)
+cd ${BASE_DIR}
+git clone https://github.com/openmetaearth/me-hub.git
+cd me-hub
 make install
-mv ~/go/bin/med ${BASE_DIR}/med/bin/
+
+# The binary will be installed to $GOPATH/bin or $HOME/go/bin
+# Create a symlink or copy it to your preferred location
+mkdir -p ${BASE_DIR}/med/bin
+cp $(which med) ${BASE_DIR}/med/bin/ || cp ~/go/bin/med ${BASE_DIR}/med/bin/
+
+# Verify installation
+${BASE_DIR}/med/bin/med version
 ```
 
 ### Step 2: Initialize Node

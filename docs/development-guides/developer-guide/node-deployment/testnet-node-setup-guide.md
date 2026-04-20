@@ -113,11 +113,14 @@ sudo apt-get update && sudo apt-get upgrade -y
 # Install necessary tools (curl, wget for downloads, jq for JSON parsing, git for version control)
 sudo apt-get install -y curl wget jq git build-essential
 
-# Install Go (needed when compiling node program from source)
-wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+# Install Go (required for building node program from source)
+wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
+
+# Verify Go installation
+go version
 ```
 
 ### Step 2: Install NTP Service
@@ -134,19 +137,20 @@ sudo systemctl start ntp
 ntpq -p
 ```
 
-### Step 3: Download Node Program
+### Step 3: Build Node Program from Source
 
 ```bash
 # Create directory
 export MECHAIN_HOME="${HOME}/.mechain"
 mkdir -p ${MECHAIN_HOME}
 
-# Download latest version (e.g., v1.2.0)
-cd /tmp
-wget https://github.com/mechain/mechain/releases/download/v1.2.0/mechain_linux_amd64.tar.gz
-tar -xzf mechain_linux_amd64.tar.gz
-sudo mv med /usr/local/bin/
-sudo chmod +x /usr/local/bin/med
+# Clone the me-hub repository
+cd ~
+git clone https://github.com/openmetaearth/me-hub.git
+cd me-hub
+
+# Build and install
+make install
 
 # Verify installation
 med version
@@ -165,17 +169,6 @@ Light nodes sync and verify blocks quickly by trusting specific full nodes, with
 med init my-light-node \
   --chain-id mechain_400-1 \
   --home ${MECHAIN_HOME}
-```
-
-### Download Genesis File
-
-```bash
-# Download testnet genesis file (defines network initial state and parameters)
-wget https://raw.githubusercontent.com/mechain/testnets/main/mechain_400-1/genesis.json \
-  -O ${MECHAIN_HOME}/config/genesis.json
-
-# Verify genesis file (check genesis file format and content correctness)
-med validate-genesis --home ${MECHAIN_HOME}
 ```
 
 ### Configure Light Client
@@ -261,12 +254,6 @@ med init my-full-node \
   --home ${MECHAIN_HOME}
 ```
 
-### Download Genesis File
-
-```bash
-wget https://raw.githubusercontent.com/mechain/testnets/main/mechain_400-1/genesis.json \
-  -O ${MECHAIN_HOME}/config/genesis.json
-```
 
 ### Configure Node
 
@@ -328,17 +315,7 @@ trust_hash = "Obtain latest trust hash"
 trust_period = "168h0m0s"
 ```
 
-#### Method 2: Snapshot Sync (Fast)
-
-```bash
-# Download latest snapshot
-wget https://snapshots.mechain.io/testnet/latest.tar.lz4
-
-# Extract to data directory
-lz4 -d latest.tar.lz4 | tar -xf - -C ${MECHAIN_HOME}/data
-```
-
-#### Method 3: Sync from Genesis (Slowest but Safest)
+#### Method 2: Sync from Genesis (Slowest but Safest)
 
 Start node directly, wait for sync completion (may take several days).
 
@@ -380,7 +357,7 @@ med status --home ${MECHAIN_HOME} 2>&1 | jq .SyncInfo
 curl -s http://localhost:26657/status | jq .result.sync_info.latest_block_height
 
 # Compare testnet height
-curl -s https://rpc-testnet.mechain.io/status | jq .result.sync_info.latest_block_height
+curl -s https://beta-hub-26657.explorer-testnet.me/status | jq .result.sync_info.latest_block_height
 ```
 
 ---
@@ -804,13 +781,12 @@ med version
 ### Official Resources
 
 - **Documentation**: https://docs.mec.me
-- **GitHub**: https://github.com/mechain/mechain
-- **Explorer**: https://explorer-testnet.mechain.io
+- **GitHub**: https://github.com/openmetaearth/me-hub
+- **Explorer**: https://www.explorer-testnet.me
 
 ### Community Support
 
 - **Telegram**: https://t.me/metaearthdevs
-- **Forum**: https://forum.mechain.io
 
 ### Reporting Issues
 
