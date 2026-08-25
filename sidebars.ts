@@ -17,8 +17,9 @@ const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     {
       type: "link",
-      label: "🌍Go to website",
+      label: "Go to website",
       href: "https://www.mec.me",
+      className: "sidebar-website-link",
     },
     {
       type: "link",
