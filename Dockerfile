@@ -5,6 +5,8 @@ WORKDIR /app
 ARG APP_ENV=production
 ARG PNPM_VERSION=10.33.0
 
+RUN apk add --no-cache libc6-compat
+
 COPY package.json pnpm-lock.yaml ./
 
 RUN npm install -g pnpm@${PNPM_VERSION}
@@ -14,6 +16,7 @@ COPY . .
 
 ENV APP_ENV=${APP_ENV}
 ENV mode=${APP_ENV}
+ENV NODE_OPTIONS=--max-old-space-size=3072
 
 RUN if [ "$APP_ENV" = "uat" ]; then \
       pnpm run build:uat; \
@@ -30,6 +33,8 @@ FROM node:18-alpine AS runner
 WORKDIR /app
 
 ARG APP_ENV=production
+
+RUN apk add --no-cache libc6-compat
 
 COPY --from=builder /app/package.json ./package.json
 COPY docusaurus.config.ts .env.production .env.uat ./

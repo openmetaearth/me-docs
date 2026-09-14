@@ -1,0 +1,13 @@
+.git
+.gitignore
+node_modules
+.docusaurus
+build
+Dockerfile
+docker-compose.yml
+README.md
+**/.DS_Store
+npm-debug.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-workspace.yaml

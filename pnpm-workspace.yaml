@@ -1,0 +1,7 @@
+allowBuilds:
+  core-js: false
+  core-js-pure: false
+
+overrides:
+  undici: 5.28.4
+  webpack: 5.105.4
